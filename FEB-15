@@ -1,0 +1,66 @@
+package com.company;
+import java.util.Arrays;
+import java.util.List;
+import java.util.*;
+
+public class FEB15<vector> {
+    public static void main(String[] args) {}
+          public static void spirallyTraverse(int [][]mat ){
+              int top = 0, left = 0, bottom = mat.length - 1, right = mat[0].length - 1;
+              if (mat == null || mat.length == 0 || left > right)
+                  return;
+              while (top <= bottom && left <= right) {
+                  // for top row
+                  for (int i = left; i <= right; i++) {
+                      System.out.print(mat[top][i] + " ");
+                  }
+                  top++;
+                  if (top > bottom)
+                      return;
+                  // for right column
+                  for (int i = top; i <= bottom; i++) {
+                      System.out.print(mat[i][right] + " ");
+                  }
+                  right--;
+                  if (left > right)
+                      return;
+                  // print bottom
+                  for (int i = right; i >= left; i--) {
+                      System.out.print(mat[bottom][i] + " ");
+                  }
+                  bottom--;
+                  if (top > bottom)
+                      return;
+                  for (int i = bottom; i >= top; i--) {
+                      System.out.print(mat[i][left] + " ");
+                  }
+                  left++;
+           }
+    }
+    private static void addTwoDMatrix(int[][] mat1, int[][] mat2) {
+        int res[][]=new int[mat1[0].length][mat1[0].length];
+        for(int i=0;i<mat1[0].length;i++) {
+            for(int j=0;j<mat2.length;j++) {
+                res[i][j]=mat1[i][j]+mat2[i][j];
+            }
+        }
+        print2DMatrix(res);
+    }
+    private static void print2DMatrix(int[][] mat) {
+        for (int[] val: mat) {
+            System.out.println(Arrays.toString(val));
+        }
+    }
+    private static void printFirstSecondDiagonal(int[][] mat1) {
+        for(int i=0;i<mat1[0].length;i++) {
+            for(int j=0;j<mat1.length;j++) {
+                if(i+j==mat1.length-1)
+                    System.out.print(mat1[i][j]+" ");
+                if(i==j) {
+                    System.out.print(mat1[i][j]+" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
